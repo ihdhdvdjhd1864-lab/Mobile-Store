@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice-App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Mobile Store</h2>
+      <h3>Management System</h3>
+      <input type="text" id="title" placeholder="title" />
+      <div class="price-inputs">
+        <input
+          onkeyup="getTotal()"
+          type="number"
+          id="price"
+          placeholder="price"
+        />
+        <input
+          onkeyup="getTotal()"
+          type="number"
+          id="taxes"
+          placeholder="taxes (0)"
+        />
+        <input
+          onkeyup="getTotal()"
+          type="number"
+          id="ads"
+          placeholder="ads (0)"
+        />
+        <input
+          onkeyup="getTotal()"
+          type="number"
+          id="discount"
+          placeholder="discount"
+        />
+        <small class="total-box" id="total"></small>
+      </div>
+      <input type="number" id="count" placeholder="count (1)" />
+      <input type="text" id="category" placeholder="category" />
+      <button id="submit">Create</button>
+      <p id="msg"></p>
+      <input
+        onkeyup="searchData(this.value)"
+        type="text"
+        id="search"
+        placeholder="Search"
+      />
+      <div class="search-buttons">
+        <button onclick="getSearchMood(this.id)" id="searchTitle">
+          Search By Title
+        </button>
+        <button onclick="getSearchMood(this.id)" id="searchCategory">
+          Search By category
+        </button>
+      </div>
+      <div id="deleteAll"></div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>TITLE</th>
+              <th>PRICE</th>
+              <th>TAXES</th>
+              <th>ADS</th>
+              <th>DISCOUNT</th>
+              <th>TOTAL</th>
+              <th>CATEGORY</th>
+              <th>UPDATE</th>
+              <th>DELETE</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
