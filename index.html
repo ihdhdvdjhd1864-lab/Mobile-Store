@@ -13,41 +13,159 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <!-- Loader Screen -->
+    <div id="loader">
+      <div class="loader-content">
+        <i class="fa-solid fa-mobile-screen-button loader-icon"></i>
+        <h2>Phoenix<span>Store</span></h2>
+        <div class="spinner"></div>
+        <p>جاري تحميل البيانات...</p>
+      </div>
+    </div>
     <div class="container">
-      <h2>Mobile Store</h2>
+      <nav class="navbar">
+        <!-- 1. الشعار واسم النظام -->
+        <div class="nav-brand">
+          <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
+          <h2>Phonix<span>Store</span></h2>
+        </div>
+
+        <!-- 2. روابط التنقل السريعة -->
+        <ul class="nav-links">
+          <li>
+            <a href="#" class="active"
+              ><i class="fa-solid fa-chart-pie"></i> لوحة التحكم</a
+            >
+          </li>
+          <li>
+            <a href="#submit"
+              ><i class="fa-solid fa-box-archive"></i> إضافة منتج</a
+            >
+          </li>
+          <li>
+            <a href="#search"
+              ><i class="fa-solid fa-magnifying-glass"></i> البحث السريع</a
+            >
+          </li>
+        </ul>
+
+        <!-- 3. البروفايل والتنبيهات -->
+        <div class="nav-actions">
+          <div class="notification-badge">
+            <i class="fa-solid fa-bell"></i>
+            <span class="dot"></span>
+          </div>
+
+          <div class="user-profile">
+            <div class="user-avatar">
+              <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div class="user-info">
+              <span class="user-name">المدير العام</span>
+              <span class="user-status"
+                ><span class="status-dot"></span> متصل</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Theme Toggle Button -->
+        <div class="theme-toggle" onclick="toggleTheme()">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </div>
+      </nav>
+      <h2>Dashboard</h2>
       <h3>Management System</h3>
-      <input type="text" id="title" placeholder="title" />
+      <!-- Chart Section -->
+
+      <!-- Dashboard Cards Section -->
+      <div class="dashboard-cards">
+        <div class="card">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <div class="card-info">
+            <p>إجمالي المنتجات</p>
+            <h3 id="dash-total-products">0</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-wallet"></i>
+          <div class="card-info">
+            <p>إجمالي القيمة المادية</p>
+            <h3 id="dash-total-money">$0</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-layer-group"></i>
+          <div class="card-info">
+            <p>عدد الأقسام (Categories)</p>
+            <h3 id="dash-total-categories">0</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+          <div class="card-info">
+            <p>أغلى منتج</p>
+            <h3 id="dash-highest-price">$0</h3>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-arrow-trend-down"></i>
+          <div class="card-info">
+            <p>أقل منتج سعرًا</p>
+            <h3 id="dash-lowest-price">$0</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
+      <div id="toast-container"></div>
+
+      <div class="actions-bar">
+        <button id="exportBtn" onclick="exportToCSV()">
+          <i class="fa-solid fa-file-excel"></i> تصدير البيانات إلى Excel
+        </button>
+      </div>
+      <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
+
+      <input type="text" id="title" placeholder="اسم الجهاز / الموديل" />
       <div class="price-inputs">
         <input
           onkeyup="getTotal()"
           type="number"
           id="price"
-          placeholder="price"
+          placeholder="سعر الشراء / التكلفة"
         />
         <input
           onkeyup="getTotal()"
           type="number"
           id="taxes"
-          placeholder="taxes (0)"
+          placeholder="لضرائب / الشحن (0)"
         />
         <input
           onkeyup="getTotal()"
           type="number"
           id="ads"
-          placeholder="ads (0)"
+          placeholder="مصاريف الدعاية (0)"
         />
         <input
           onkeyup="getTotal()"
           type="number"
           id="discount"
-          placeholder="discount"
+          placeholder="الخصم للعميل"
         />
         <small class="total-box" id="total"></small>
       </div>
-      <input type="number" id="count" placeholder="count (1)" />
-      <input type="text" id="category" placeholder="category" />
+      <input
+        type="number"
+        id="count"
+        placeholder="الكمية المتاحة بالمخزن (الافتراضي 1)"
+      />
+      <input type="text" id="category" placeholder="الفئة / القسم" />
       <button id="submit">Create</button>
       <p id="msg"></p>
       <input
@@ -86,6 +204,7 @@
       </div>
     </div>
 
+    <div class="up"><i class="fa-solid fa-arrow-up"></i></div>
     <script src="script.js"></script>
   </body>
 </html>
