@@ -26,62 +26,68 @@
       </div>
     </div>
 
-
     <div class="Section-full-system">
-
       <!-- 1. قسم لوحة التحكم (Dashboard) -->
       <div class="container">
-                  <!-- قسم النافبار -->
-    <nav class="navbar">
-      <!-- 1. الشعار واسم النظام -->
-      <div class="nav-brand">
-        <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
-        <h2>Phonix<span>Store</span></h2>
-      </div>
+        <!-- قسم النافبار -->
+        <nav class="navbar">
+          <!-- 1. الشعار واسم النظام -->
 
-      <!-- 2. روابط التنقل السريعة -->
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active"
-            ><i class="fa-solid fa-chart-pie"></i> لوحة التحكم</a
-          >
-        </li>
-        <li>
-          <a href="#submit"
-            ><i class="fa-solid fa-box-archive"></i> إضافة منتج</a
-          >
-        </li>
-        <li>
-          <a href="#search"
-            ><i class="fa-solid fa-magnifying-glass"></i> البحث السريع</a
-          >
-        </li>
-      </ul>
-
-      <!-- 3. البروفايل والتنبيهات -->
-      <div class="nav-actions">
-        <div class="notification-badge">
-          <i class="fa-solid fa-bell"></i>
-          <span class="dot"></span>
-        </div>
-
-        <div class="user-profile">
-          <div class="user-avatar">
-            <img src="img/IMG-20260323-WA0006.jpg" alt="" />
+          <div class="nav-brand">
+            <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
+            <h2>Phonix<span>Store</span></h2>
           </div>
-          <div class="user-info">
-            <span class="user-name">المدير العام</span>
-            <span class="user-status"
-              ><span class="status-dot"></span> متصل</span
-            >
+          <!-- 2. البروفايل والتنبيهات -->
+          <div class="nav-actions">
+            <div class="notification-badge">
+              <i class="fa-solid fa-bell"></i>
+              <span class="dot"></span>
+            </div>
+
+            <div class="user-profile">
+              <div class="user-avatar">
+                <img src="img/IMG-20260323-WA0006.jpg" alt="" />
+              </div>
+              <div class="user-info">
+                <span class="user-name">المدير العام</span>
+                <span class="user-status"
+                  ><span class="status-dot"></span> متصل</span
+                >
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- Theme Toggle Button -->
-      <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fa-solid fa-moon" id="theme-icon"></i>
-      </div>
-    </nav>
+
+          <button class="toggle-btn"><i class="fa-solid fa-bars"></i></button>
+          <div class="overlay">
+            <!-- 4. روابط التنقل السريعة -->
+            <ul class="nav-links">
+              <li>
+                <a href="#" class="active"
+                  ><i class="fa-solid fa-chart-pie"></i> لوحة التحكم</a
+                >
+              </li>
+              <li>
+                <a href="#submit"
+                  ><i class="fa-solid fa-box-archive"></i> إضافة منتج</a
+                >
+              </li>
+              <li>
+                <a href="#search"
+                  ><i class="fa-solid fa-magnifying-glass"></i> البحث السريع</a
+                >
+              </li>
+            </ul>
+
+            <!-- Theme Toggle Button -->
+            <div class="theme-toggle" onclick="toggleTheme()">
+              <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </div>
+            <div id="btnLogon" onclick="logout()">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              تسجيل الخروج
+            </div>
+          </div>
+        </nav>
         <h2>Dashboard</h2>
         <h3>Management System</h3>
         <!-- Chart Section -->

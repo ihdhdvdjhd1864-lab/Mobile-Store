@@ -488,15 +488,15 @@ empSubmit.addEventListener("click", () => {
     salary: empSalary.value,
     date: empDate.value,
   };
-if (
-  empName.value === "" ||
-  empRole.value === "" ||
-  empSalary.value === "" ||
-  empDate.value === ""
-) {
-  alert("املأ جميع الحقول");
-  return;
-}
+  if (
+    empName.value === "" ||
+    empRole.value === "" ||
+    empSalary.value === "" ||
+    empDate.value === ""
+  ) {
+    alert("املأ جميع الحقول");
+    return;
+  }
   arrEmployees.push(employee);
   localStorage.setItem("ArrEmployees", JSON.stringify(arrEmployees));
   showDataEmployee();
@@ -533,4 +533,21 @@ function deleteEmployee(index) {
   }
 }
 
-console.log(arrEmployees.length);
+
+let toggleBtn = document.querySelector(".toggle-btn");
+let overlay = document.querySelector(".overlay");
+toggleBtn.addEventListener("click", () => {
+  overlay.classList.toggle("active");
+  if (overlay.classList.contains("active")) {
+    toggleBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+  }
+  else {
+    toggleBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+  }
+}
+);
+
+overlay.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  toggleBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+});

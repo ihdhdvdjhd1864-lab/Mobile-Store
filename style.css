@@ -23,7 +23,6 @@ body {
     ),
     #0a0a0a;
   color: white;
-
   padding: 40px 20px;
 }
 .Section-full-system {
@@ -47,6 +46,9 @@ body {
   margin-bottom: 25px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   gap: 15px;
+}
+.overlay {
+  display: flex;
 }
 
 .nav-brand {
@@ -209,6 +211,20 @@ body {
     opacity: 1;
     transform: scale(1.2);
   }
+}
+.toggle-btn {
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(168, 85, 247, 0.2);
+  color: #fff;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  display: none;
 }
 
 /* ==================== CONTAINER & SECTIONS ==================== */
@@ -541,6 +557,15 @@ body.light-mode td {
   color: #334155;
   border-bottom: 1px solid #e2e8f0;
 }
+body.light-mode .user-name {
+  color: #334155;
+}
+body.light-mode .nav-brand *:nth-child(2) {
+  color: #334155;
+}
+body.light-mode .toggle-btn {
+  color: #334155;
+}
 
 /* Loader Styles */
 #loader {
@@ -667,15 +692,92 @@ body.light-mode td {
   margin-bottom: 10px;
   font-weight: 600;
 }
+#btnLogon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ff4d4d, #d90429);
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(217, 4, 41, 0.3);
+}
+
+#btnLogon i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+#btnLogon :hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(217, 4, 41, 0.45);
+  background: linear-gradient(135deg, #ff5e5e, #b3001b);
+}
+
+#btnLogon:hover i {
+  transform: translateX(-4px);
+}
+
+#btnLogon:active {
+  transform: scale(0.96);
+}
 
 @media (max-width: 768px) {
   .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toggle-btn {
+    display: block;
+  }
+  .overlay .nav-links {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .nav-links {
-    display: none;
+  .overlay {
+    position: fixed;
+    top: 0px;
+    left: -100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 0;
+    transition: 0.5s ease-in-out;
+    background: rgb(169, 85, 247);
+    border: 2px solid rgba(251, 251, 251, 0.949);
+    border-radius: 20px;
+    margin: 0;
+    z-index: 9999;
+    padding: 20px;
   }
+   .overlay i{
+    color: #ffffff;
+   }
+  .overlay.active {
+    left: -15%;
+  }
+  body.light-mode .overlay {
+    background: #f4f4f5;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  body.light-mode .overlay i {
+    color: #0f172a;
+  }
+
   .price-inputs,
   .search-buttons {
     flex-direction: column;
