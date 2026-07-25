@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phoenix Store - دخول الأدمن</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="login.style.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-card">
+      <div class="brand">
+        <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
+        <h2>Phoenix<span>Store</span></h2>
+        <p>تسجيل دخول الأدمن</p>
+      </div>
+
+      <form >
+        <div class="input-group">
+          <label><i class="fa-solid fa-id-card"></i> معرف الأدمن (ID)</label>
+          <input type="text" id="adminId" placeholder="ID" required />
+        </div>
+
+        <div class="input-group">
+          <label><i class="fa-solid fa-lock"></i> الباسورد / الكود</label>
+          <input
+            type="password"
+            id="adminCode"
+            placeholder="Password / Code"
+            required
+          />
+        </div>
+
+        <p id="errorMsg"></p>
+
+        <button type="submit" class="btn-login">دخول النظام</button>
+      </form>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

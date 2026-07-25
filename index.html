@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <!-- Loader Screen -->
+    <!-- قسم شاشة التحميل  -->
     <div id="loader">
       <div class="loader-content">
         <i class="fa-solid fa-mobile-screen-button loader-icon"></i>
@@ -25,185 +25,298 @@
         <p>جاري تحميل البيانات...</p>
       </div>
     </div>
-    <div class="container">
-      <nav class="navbar">
-        <!-- 1. الشعار واسم النظام -->
-        <div class="nav-brand">
-          <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
-          <h2>Phonix<span>Store</span></h2>
+
+
+    <div class="Section-full-system">
+
+      <!-- 1. قسم لوحة التحكم (Dashboard) -->
+      <div class="container">
+                  <!-- قسم النافبار -->
+    <nav class="navbar">
+      <!-- 1. الشعار واسم النظام -->
+      <div class="nav-brand">
+        <i class="fa-solid fa-mobile-screen-button brand-icon"></i>
+        <h2>Phonix<span>Store</span></h2>
+      </div>
+
+      <!-- 2. روابط التنقل السريعة -->
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active"
+            ><i class="fa-solid fa-chart-pie"></i> لوحة التحكم</a
+          >
+        </li>
+        <li>
+          <a href="#submit"
+            ><i class="fa-solid fa-box-archive"></i> إضافة منتج</a
+          >
+        </li>
+        <li>
+          <a href="#search"
+            ><i class="fa-solid fa-magnifying-glass"></i> البحث السريع</a
+          >
+        </li>
+      </ul>
+
+      <!-- 3. البروفايل والتنبيهات -->
+      <div class="nav-actions">
+        <div class="notification-badge">
+          <i class="fa-solid fa-bell"></i>
+          <span class="dot"></span>
         </div>
 
-        <!-- 2. روابط التنقل السريعة -->
-        <ul class="nav-links">
-          <li>
-            <a href="#" class="active"
-              ><i class="fa-solid fa-chart-pie"></i> لوحة التحكم</a
-            >
-          </li>
-          <li>
-            <a href="#submit"
-              ><i class="fa-solid fa-box-archive"></i> إضافة منتج</a
-            >
-          </li>
-          <li>
-            <a href="#search"
-              ><i class="fa-solid fa-magnifying-glass"></i> البحث السريع</a
-            >
-          </li>
-        </ul>
-
-        <!-- 3. البروفايل والتنبيهات -->
-        <div class="nav-actions">
-          <div class="notification-badge">
-            <i class="fa-solid fa-bell"></i>
-            <span class="dot"></span>
+        <div class="user-profile">
+          <div class="user-avatar">
+            <img src="img/IMG-20260323-WA0006.jpg" alt="" />
           </div>
+          <div class="user-info">
+            <span class="user-name">المدير العام</span>
+            <span class="user-status"
+              ><span class="status-dot"></span> متصل</span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Theme Toggle Button -->
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+      </div>
+    </nav>
+        <h2>Dashboard</h2>
+        <h3>Management System</h3>
+        <!-- Chart Section -->
 
-          <div class="user-profile">
-            <div class="user-avatar">
-              <i class="fa-solid fa-user-gear"></i>
+        <!-- Dashboard Cards Section -->
+        <div class="dashboard-cards">
+          <div class="card">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <div class="card-info">
+              <p>إجمالي المنتجات</p>
+              <h3 id="dash-total-products">0</h3>
             </div>
-            <div class="user-info">
-              <span class="user-name">المدير العام</span>
-              <span class="user-status"
-                ><span class="status-dot"></span> متصل</span
-              >
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-wallet"></i>
+            <div class="card-info">
+              <p>إجمالي القيمة المادية</p>
+              <h3 id="dash-total-money">$0</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-layer-group"></i>
+            <div class="card-info">
+              <p>عدد الأقسام (Categories)</p>
+              <h3 id="dash-total-categories">0</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <div class="card-info">
+              <p>أغلى منتج</p>
+              <h3 id="dash-highest-price">$0</h3>
+            </div>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-arrow-trend-down"></i>
+            <div class="card-info">
+              <p>أقل منتج سعرًا</p>
+              <h3 id="dash-lowest-price">$0</h3>
+            </div>
+          </div>
+          <!-- ==================== 1. كروت الإحصائيات الجديدة (تضاف داخل div.dashboard-cards) ==================== -->
+          <div class="card">
+            <i class="fa-solid fa-users"></i>
+            <div class="card-info">
+              <p>إجمالي العملاء</p>
+              <h3 id="dash-total-clients">0</h3>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-user-tie"></i>
+            <div class="card-info">
+              <p>إجمالي الموظفين</p>
+              <h3 id="dash-total-employees">0</h3>
             </div>
           </div>
         </div>
-        <!-- Theme Toggle Button -->
-        <div class="theme-toggle" onclick="toggleTheme()">
-          <i class="fa-solid fa-moon" id="theme-icon"></i>
-        </div>
-      </nav>
-      <h2>Dashboard</h2>
-      <h3>Management System</h3>
-      <!-- Chart Section -->
 
-      <!-- Dashboard Cards Section -->
-      <div class="dashboard-cards">
-        <div class="card">
-          <i class="fa-solid fa-boxes-stacked"></i>
-          <div class="card-info">
-            <p>إجمالي المنتجات</p>
-            <h3 id="dash-total-products">0</h3>
-          </div>
-        </div>
+        <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
+        <div id="toast-container"></div>
 
-        <div class="card">
-          <i class="fa-solid fa-wallet"></i>
-          <div class="card-info">
-            <p>إجمالي القيمة المادية</p>
-            <h3 id="dash-total-money">$0</h3>
-          </div>
+        <div class="actions-bar">
+          <button id="exportBtn" onclick="exportToCSV()">
+            <i class="fa-solid fa-file-excel"></i> تصدير البيانات إلى Excel
+          </button>
         </div>
+        <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
 
-        <div class="card">
-          <i class="fa-solid fa-layer-group"></i>
-          <div class="card-info">
-            <p>عدد الأقسام (Categories)</p>
-            <h3 id="dash-total-categories">0</h3>
-          </div>
+        <input type="text" id="title" placeholder="اسم الجهاز / الموديل" />
+        <div class="price-inputs">
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="price"
+            placeholder="سعر الشراء / التكلفة"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="taxes"
+            placeholder="لضرائب / الشحن (0)"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="ads"
+            placeholder="مصاريف الدعاية (0)"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="discount"
+            placeholder="الخصم للعميل"
+          />
+          <small class="total-box" id="total"></small>
         </div>
-
-        <div class="card">
-          <i class="fa-solid fa-arrow-trend-up"></i>
-          <div class="card-info">
-            <p>أغلى منتج</p>
-            <h3 id="dash-highest-price">$0</h3>
-          </div>
+        <input
+          type="number"
+          id="count"
+          placeholder="الكمية المتاحة بالمخزن (الافتراضي 1)"
+        />
+        <input type="text" id="category" placeholder="الفئة / القسم" />
+        <button id="submit">Create</button>
+        <p id="msg"></p>
+        <input
+          onkeyup="searchData(this.value)"
+          type="text"
+          id="search"
+          placeholder="Search"
+        />
+        <div class="search-buttons">
+          <button onclick="getSearchMood(this.id)" id="searchTitle">
+            Search By Title
+          </button>
+          <button onclick="getSearchMood(this.id)" id="searchCategory">
+            Search By category
+          </button>
         </div>
-        <div class="card">
-          <i class="fa-solid fa-arrow-trend-down"></i>
-          <div class="card-info">
-            <p>أقل منتج سعرًا</p>
-            <h3 id="dash-lowest-price">$0</h3>
-          </div>
+        <div id="deleteAll"></div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+                <th>TAXES</th>
+                <th>ADS</th>
+                <th>DISCOUNT</th>
+                <th>TOTAL</th>
+                <th>CATEGORY</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
         </div>
       </div>
 
-      <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
-      <div id="toast-container"></div>
+      <!-- ==================== 2. قسم إدارة العملاء (Clients Section) ==================== -->
+      <div id="clients-section" class="main-section">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-users"></i> إدارة العملاء</h2>
+        </div>
 
-      <div class="actions-bar">
-        <button id="exportBtn" onclick="exportToCSV()">
-          <i class="fa-solid fa-file-excel"></i> تصدير البيانات إلى Excel
-        </button>
-      </div>
-      <!-- اكسيل تصدير📊📊################### ؟؟؟؟ -->
+        <div class="form-grid">
+          <input
+            type="text"
+            id="client-name"
+            placeholder="اسم العميل الثلاثي"
+          />
+          <input type="tel" id="client-phone" placeholder="رقم الهاتف" />
+          <input
+            type="email"
+            id="client-email"
+            placeholder="البريد الإلكتروني"
+          />
+          <input
+            type="text"
+            id="client-address"
+            placeholder="العنوان / المدينة"
+          />
+        </div>
+        <button id="client-submit">إضافة عميل جديد</button>
+        <p id="client-msg"></p>
 
-      <input type="text" id="title" placeholder="اسم الجهاز / الموديل" />
-      <div class="price-inputs">
         <input
-          onkeyup="getTotal()"
-          type="number"
-          id="price"
-          placeholder="سعر الشراء / التكلفة"
+          type="text"
+          id="search-client"
+          placeholder="بحث باسم العميل أو رقم الهاتف..."
         />
-        <input
-          onkeyup="getTotal()"
-          type="number"
-          id="taxes"
-          placeholder="لضرائب / الشحن (0)"
-        />
-        <input
-          onkeyup="getTotal()"
-          type="number"
-          id="ads"
-          placeholder="مصاريف الدعاية (0)"
-        />
-        <input
-          onkeyup="getTotal()"
-          type="number"
-          id="discount"
-          placeholder="الخصم للعميل"
-        />
-        <small class="total-box" id="total"></small>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th><i class="fa-solid fa-id-card"></i></th>
+                <th>اسم العميل</th>
+                <th>رقم الهاتف</th>
+                <th>البريد الإلكتروني</th>
+                <th>العنوان</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-clients"></tbody>
+          </table>
+        </div>
       </div>
-      <input
-        type="number"
-        id="count"
-        placeholder="الكمية المتاحة بالمخزن (الافتراضي 1)"
-      />
-      <input type="text" id="category" placeholder="الفئة / القسم" />
-      <button id="submit">Create</button>
-      <p id="msg"></p>
-      <input
-        onkeyup="searchData(this.value)"
-        type="text"
-        id="search"
-        placeholder="Search"
-      />
-      <div class="search-buttons">
-        <button onclick="getSearchMood(this.id)" id="searchTitle">
-          Search By Title
-        </button>
-        <button onclick="getSearchMood(this.id)" id="searchCategory">
-          Search By category
-        </button>
-      </div>
-      <div id="deleteAll"></div>
-      <div class="table-responsive">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>PRICE</th>
-              <th>TAXES</th>
-              <th>ADS</th>
-              <th>DISCOUNT</th>
-              <th>TOTAL</th>
-              <th>CATEGORY</th>
-              <th>UPDATE</th>
-              <th>DELETE</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
+
+      <!-- ==================== 3. قسم إدارة الموظفين (Employees Section) ==================== -->
+      <div id="employees-section" class="main-section">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-user-tie"></i> إدارة الموظفين</h2>
+        </div>
+
+        <div class="form-grid">
+          <input type="text" id="emp-name" placeholder="اسم الموظف" />
+          <input
+            type="text"
+            id="emp-role"
+            placeholder="المسمى الوظيفي (مثال: مبيعات)"
+          />
+          <input
+            type="number"
+            id="emp-salary"
+            placeholder="الراتب الشهري ($)"
+          />
+          <input type="date" id="emp-date" placeholder="تاريخ التعيين" />
+        </div>
+        <button id="emp-submit">إضافة موظف جديد</button>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>اسم الموظف</th>
+                <th>الوظيفة</th>
+                <th>الراتب</th>
+                <th>تاريخ التعيين</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-employees"></tbody>
+          </table>
+        </div>
       </div>
     </div>
-
+    <!-- سهم لأعلى -->
     <div class="up"><i class="fa-solid fa-arrow-up"></i></div>
     <script src="script.js"></script>
   </body>

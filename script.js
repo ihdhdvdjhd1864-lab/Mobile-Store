@@ -1,4 +1,16 @@
+// حماية الداشبورد - التأكد من تسجيل الدخول
+if (sessionStorage.getItem("isLoggedIn") !== "true") {
+  window.location.href = "login.html";
+}
+
+// دالة تسجيل الخروج
+function logout() {
+  sessionStorage.removeItem("isLoggedIn");
+  window.location.href = "login.html";
+}
+
 // إخفاء شاشة التحميل بعد 3 ثواني (3000ms)
+
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     let loader = document.getElementById("loader");
@@ -136,7 +148,7 @@ function deleteAllBtn() {
 }
 
 function deleteAll() {
-  localStorage.clear();
+  localStorage.removeItem("product");
   dataPro.splice(0);
   showData();
   title.value = "";
@@ -339,7 +351,6 @@ function exportToCSV() {
   showToast("تم تصدير ملف Excel بنجاح! 📊", "success");
 } /* اكسيل تصدير📊📊################### ؟؟؟؟  */
 
-
 // دالة التحويل بين المود المظلم والمضيء مع حفظ الاختيار
 function toggleTheme() {
   let body = document.body;
@@ -366,3 +377,160 @@ window.addEventListener("DOMContentLoaded", () => {
     if (icon) icon.className = "fa-solid fa-sun";
   }
 });
+
+let ueas = document.querySelector("#client-name");
+let phone = document.querySelector("#client-phone");
+let email = document.querySelector("#client-email");
+let address = document.querySelector("#client-address");
+let submit22 = document.querySelector("#client-submit");
+let search = document.querySelector("#search-client");
+let tbody = document.querySelector("#tbody-clients");
+let msg = document.querySelector("#client-msg");
+let dashtoTalClients = document.querySelector("#dash-total-clients");
+
+let dataClient = [];
+
+submit22.addEventListener("click", () => {
+  let client = {
+    name: ueas.value,
+    phone: phone.value,
+    email: email.value,
+    address: address.value,
+  };
+  dataClient.push(client);
+  let error220 = "";
+  if (
+    ueas.value.trim() === "" ||
+    phone.value.trim() === "" ||
+    email.value.trim() === "" ||
+    address.value.trim() === ""
+  ) {
+    error220 = "Please Enter Valid Data";
+    let clientmsg = document.getElementById("client-msg");
+    clientmsg.innerHTML = error220;
+    setTimeout(() => {
+      clientmsg.innerHTML = "";
+    }, 2000);
+    return;
+  }
+  localStorage.setItem("dataClient", JSON.stringify(dataClient));
+  showDataClient();
+  ueas.value = "";
+  phone.value = "";
+  email.value = "";
+  address.value = "";
+});
+
+function showDataClient() {
+  tbody.innerHTML = "";
+  dataClient = JSON.parse(localStorage.getItem("dataClient")) || [];
+  dataClient.forEach((client, index) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${`<i class="fa-solid fa-user"></i>`}</td>
+    <td>${client.name}</td>
+    <td>${client.phone}</td>
+    <td>${client.email}</td>
+    <td>${client.address}</td>
+    <td><button onclick="deleteClient(${index})" class="delete22">delete</button></td>
+    `;
+    tbody.appendChild(tr);
+    dashtoTalClients.innerHTML = dataClient.length;
+  });
+}
+showDataClient();
+
+function deleteClient(index) {
+  if (confirm("هل تريد حذف هذا العميل؟")) {
+    dataClient.splice(index, 1);
+    localStorage.setItem("dataClient", JSON.stringify(dataClient));
+    showDataClient();
+  }
+}
+
+search.addEventListener("input", () => {
+  let value = search.value.toLowerCase();
+  let filteredData = dataClient.filter((client) => {
+    return (
+      client.name.toLowerCase().includes(value) ||
+      client.phone.toLowerCase().includes(value) ||
+      client.email.toLowerCase().includes(value)
+    );
+  });
+  tbody.innerHTML = "";
+  filteredData.forEach((client, index) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${client.name}</td>
+    <td>${client.phone}</td>
+    <td>${client.email}</td>
+    <td>${client.address}</td>
+    <td><button onclick="deleteClient(${index})" class="delete22">delete</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+});
+
+let empName = document.querySelector("#emp-name");
+let empRole = document.querySelector("#emp-role");
+let empSalary = document.querySelector("#emp-salary");
+let empDate = document.querySelector("#emp-date");
+let empSubmit = document.querySelector("#emp-submit");
+let tbodyEmployees = document.querySelector("#tbody-employees");
+let dashTotalEmployeess = document.querySelector("#dash-total-employees");
+let arrEmployees = [];
+empSubmit.addEventListener("click", () => {
+  let employee = {
+    name: empName.value,
+    role: empRole.value,
+    salary: empSalary.value,
+    date: empDate.value,
+  };
+if (
+  empName.value === "" ||
+  empRole.value === "" ||
+  empSalary.value === "" ||
+  empDate.value === ""
+) {
+  alert("املأ جميع الحقول");
+  return;
+}
+  arrEmployees.push(employee);
+  localStorage.setItem("ArrEmployees", JSON.stringify(arrEmployees));
+  showDataEmployee();
+  empName.value = "";
+  empRole.value = "";
+  empSalary.value = "";
+  empDate.value = "";
+});
+
+function showDataEmployee() {
+  tbodyEmployees.innerHTML = "";
+  arrEmployees = JSON.parse(localStorage.getItem("ArrEmployees")) || [];
+  arrEmployees.forEach((employee, index) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${employee.name}</td>
+    <td>${employee.role}</td>
+    <td>${employee.salary}</td>
+    <td>${employee.date}</td>
+    <td><button onclick="deleteEmployee(${index})" class="delete22">delete</button></td>
+    `;
+    tbodyEmployees.appendChild(tr);
+  });
+  dashTotalEmployeess.innerHTML = arrEmployees.length;
+}
+showDataEmployee();
+
+function deleteEmployee(index) {
+  if (confirm("هل تريد حذف هذا الموظف؟")) {
+    arrEmployees.splice(index, 1);
+    localStorage.setItem("ArrEmployees", JSON.stringify(arrEmployees));
+    showDataEmployee();
+  }
+}
+
+console.log(arrEmployees.length);

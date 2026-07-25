@@ -9,9 +9,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
   background:
     radial-gradient(
       circle at top left,
@@ -24,14 +22,16 @@ body {
       transparent 30%
     ),
     #0a0a0a;
-
   color: white;
 
-  display: flex;
-  justify-content: center;
   padding: 40px 20px;
 }
-
+.Section-full-system {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* ==================== NAVBAR STYLES ==================== */
 .navbar {
   display: flex;
@@ -46,9 +46,9 @@ body {
   border-radius: 16px;
   margin-bottom: 25px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  gap: 15px;
 }
 
-/* الشعار */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -72,11 +72,10 @@ body {
   color: #a855f7;
 }
 
-/* الروابط */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 15px;
   margin: 0;
   padding: 0;
 }
@@ -84,8 +83,8 @@ body {
 .nav-links a {
   color: #cbd5e1;
   text-decoration: none;
-  font-size: 0.95rem;
-  padding: 8px 16px;
+  font-size: 0.9rem;
+  padding: 8px 14px;
   border-radius: 10px;
   transition: all 0.3s ease;
   display: flex;
@@ -100,11 +99,10 @@ body {
   border: 1px solid rgba(168, 85, 247, 0.4);
 }
 
-/* الأكشنز والبروفايل */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 18px;
 }
 
 .notification-badge {
@@ -132,7 +130,7 @@ body {
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.03);
   padding: 6px 14px;
   border-radius: 30px;
@@ -143,12 +141,13 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #a855f7, #6366f1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-info {
@@ -167,7 +166,6 @@ body {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 4px;
 }
 
@@ -180,8 +178,30 @@ body {
   animation: status 3s ease-in-out infinite;
 }
 
+.logout-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 @keyframes status {
-  0% {
+  0%,
+  100% {
     opacity: 0;
     transform: scale(1);
   }
@@ -189,12 +209,9 @@ body {
     opacity: 1;
     transform: scale(1.2);
   }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
 }
 
+/* ==================== CONTAINER & SECTIONS ==================== */
 .container {
   width: 100%;
   max-width: 1500px;
@@ -209,33 +226,50 @@ body {
   animation: fadeIn 0.7s ease;
 }
 
-/* =========================
-HEADINGS
-========================= */
+.main-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==================== HEADINGS ==================== */
 h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin-bottom: 10px;
   background: linear-gradient(90deg, #ffffff, #d8b4fe);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  -webkit-text-fill-color: transparent;
 }
+
 h3 {
   color: #bdbdbd;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  margin-bottom: 35px;
-  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  font-size: 13px;
 }
 
-/* =========================
-INPUTS
-========================= */
-
+/* ==================== INPUTS & FORM GRID ==================== */
 input {
   width: 100%;
   height: 52px;
@@ -248,26 +282,26 @@ input {
   font-size: 15px;
   transition: 0.3s ease;
 }
+
 input::placeholder {
   color: #8f8f8f;
 }
-
 input:hover {
   border-color: rgba(168, 85, 247, 0.5);
 }
-
 input:focus {
   outline: none;
   border-color: #8b5cf6;
-  box-shadow:
-    0 0 0 4px rgba(139, 92, 246, 0.15),
-    0 0 20px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
   transform: translateY(-2px);
 }
 
-/* =========================
-PRICE INPUTS
-========================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  margin-bottom: 10px;
+}
 
 .price-inputs {
   display: flex;
@@ -278,67 +312,39 @@ PRICE INPUTS
   margin-bottom: 0;
 }
 
-/* =========================
-TOTAL
-========================= */
-
 .total-box {
   min-width: 140px;
-
   height: 52px;
-
   line-height: 52px;
-
   padding: 0 20px;
-
   border-radius: 14px;
-
   background: linear-gradient(135deg, #ef4444, #991b1b);
-
   font-weight: bold;
-
   box-shadow: 0 10px 25px rgba(239, 68, 68, 0.25);
-
   white-space: nowrap;
 }
-
 .total-box::before {
-  content: "Total : ";
+  content: "الإجمالي: ";
 }
 
-/* =========================
-BUTTONS
-========================= */
-
+/* ==================== BUTTONS ==================== */
 button {
   width: 100%;
-
   height: 52px;
-
   border: none;
-
   border-radius: 50px;
-
   cursor: pointer;
-
   color: white;
-
   font-size: 15px;
-
   font-weight: 700;
-
   background: linear-gradient(135deg, #7c3aed, #9333ea);
-
   box-shadow: 0 10px 30px rgba(124, 58, 237, 0.35);
-
   transition: 0.3s ease;
-
   margin-bottom: 15px;
 }
 
 button:hover {
   transform: translateY(-3px);
-
   box-shadow: 0 15px 35px rgba(124, 58, 237, 0.45);
 }
 
@@ -346,109 +352,16 @@ button:active {
   transform: scale(0.98);
 }
 
-/* =========================
-SEARCH BUTTONS
-========================= */
-
 .search-buttons {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
 }
 
-/* =========================
-MESSAGE
-========================= */
-
-#msg {
-  width: fit-content;
-
-  margin: 20px auto;
-
-  padding: 12px 22px;
-
-  border-radius: 12px;
-
-  background: linear-gradient(135deg, #dc2626, #991b1b);
-
-  font-weight: bold;
-
-  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.25);
-}
-
-#msg:empty {
-  display: none;
-}
-
-/* =========================
-TABLE
-========================= */
-
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  min-width: 900px;
-
-  border-collapse: collapse;
-
-  overflow: hidden;
-
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.02);
-}
-
-th {
-  padding: 18px;
-
-  background: rgba(124, 58, 237, 0.15);
-
-  color: #d4d4d4;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  font-size: 13px;
-}
-
-td {
-  padding: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-tbody tr {
-  transition: 0.3s ease;
-}
-
-tbody tr:hover {
-  background: rgba(124, 58, 237, 0.08);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 20px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #7c3aed;
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111;
-}
-
-/* =========================
-DASHBOARD CARDS
-========================= */
+/* ==================== DASHBOARD CARDS ==================== */
 .dashboard-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   margin-bottom: 30px;
 }
@@ -471,7 +384,7 @@ DASHBOARD CARDS
 }
 
 .card i {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #c084fc;
   background: rgba(139, 92, 246, 0.15);
   padding: 12px;
@@ -480,51 +393,57 @@ DASHBOARD CARDS
 
 .card-info p {
   color: #a1a1aa;
-  font-size: 13px;
+  font-size: 12px;
   margin-bottom: 5px;
 }
 
 .card-info h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #fff;
   margin-bottom: 0;
   letter-spacing: 0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
+/* ==================== TABLES ==================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
 }
-.card .fa-arrow-trend-down {
-  color: #ee1f1088; /* لون أزرق ناعم */
+
+th {
+  padding: 16px;
+  background: rgba(124, 58, 237, 0.15);
+  color: #d4d4d4;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
 }
-.card .fa-arrow-trend-up {
-  color: #3bf00a88;
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
 }
-.up {
-  animation: fadeIn 0.5s ease-in-out;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: #8b5cf6;
-  background: rgba(139, 92, 246, 0.15);
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
+
+tbody tr:hover {
+  background: rgba(124, 58, 237, 0.08);
 }
-/* اكسيل تصدير📊📊################### ؟؟؟؟  */
+
+/* ==================== TOAST & EXPORT ==================== */
 #toast-container {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -533,81 +452,44 @@ DASHBOARD CARDS
 
 .toast {
   min-width: 250px;
-  padding: 15px 20px;
-  border-radius: 14px;
-  background: rgba(18, 18, 18, 0.85);
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(18, 18, 18, 0.9);
   backdrop-filter: blur(15px);
   color: white;
   font-size: 14px;
-  font-weight: 600;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation:
-    slideIn 0.4s ease,
-    fadeOut 0.4s ease 2.6s forwards;
-}
-
-.toast.success {
-  border-left: 4px solid #10b981;
-}
-.toast.error {
-  border-left: 4px solid #ef4444;
-}
-.toast.info {
-  border-left: 4px solid #3b82f6;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.actions-bar {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#exportBtn {
-  width: auto;
-  padding: 0 25px;
-  background: linear-gradient(135deg, #059669, #10b981);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 0;
+  animation: slideIn 0.4s ease;
 }
 
-#exportBtn:hover {
-  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+.toast.success {
+  border-right: 4px solid #10b981;
 }
-/* اكسيل تصدير📊📊################### ؟؟؟؟  */
+.toast.error {
+  border-right: 4px solid #ef4444;
+}
+.toast.info {
+  border-right: 4px solid #3b82f6;
+}
 
-/* =========================
-THEME TOGGLE BUTTON
-========================= */
+#exportBtn,
+.export-btn-secondary {
+  width: auto;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
 .theme-toggle {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -616,49 +498,26 @@ THEME TOGGLE BUTTON
   align-items: center;
   cursor: pointer;
   color: #c084fc;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
 }
 
-.theme-toggle:hover {
-  background: rgba(168, 85, 247, 0.2);
-  transform: rotate(15deg);
-}
-
-/* =========================
-LIGHT MODE STYLES
-========================= */
+/* ==================== LIGHT MODE ==================== */
 body.light-mode {
   background: #f1f5f9;
-  background-image:
-    radial-gradient(
-      circle at 10% 20%,
-      rgba(124, 58, 237, 0.08),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(168, 85, 247, 0.05),
-      transparent 40%
-    );
   color: #0f172a;
 }
 
 body.light-mode .navbar,
 body.light-mode .card,
-body.light-mode .inputs,
-body.light-mode .searchBlock,
+body.light-mode .container,
 body.light-mode .table-responsive {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 body.light-mode h2 {
   background: linear-gradient(90deg, #1e1b4b, #6b21a8);
-  -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 body.light-mode h3,
@@ -673,10 +532,6 @@ body.light-mode input {
   color: #0f172a;
 }
 
-body.light-mode input::placeholder {
-  color: #94a3b8;
-}
-
 body.light-mode th {
   background: rgba(124, 58, 237, 0.1);
   color: #4c1d95;
@@ -687,12 +542,7 @@ body.light-mode td {
   border-bottom: 1px solid #e2e8f0;
 }
 
-body.light-mode .user-name {
-  color: #0f172a;
-}
-
-/* بدايه الصفحه  */
-
+/* Loader Styles */
 #loader {
   position: fixed;
   top: 0;
@@ -716,26 +566,11 @@ body.light-mode .user-name {
   align-items: center;
   gap: 15px;
 }
-
 .loader-icon {
   font-size: 3.5rem;
   color: #a855f7;
-  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.8));
   animation: pulse 1.5s infinite ease-in-out;
 }
-
-.loader-content h2 {
-  font-size: 2rem;
-  margin-bottom: 0;
-}
-
-.loader-content p {
-  color: #a1a1aa;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-/* الدائرة المضيئة الدوارة */
 .spinner {
   width: 45px;
   height: 45px;
@@ -745,80 +580,107 @@ body.light-mode .user-name {
   animation: spin 1s linear infinite;
 }
 
-/* أنيميشن الدوران والنبض */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-}
-
-/* كلاس إخفاء الشاشة بعد الانتهاء */
 #loader.hide {
   opacity: 0;
   visibility: hidden;
 }
-/* نهاية بدايه الصفحه */
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.15);
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: none;
+}
+
+/* ==================== تنسيقات الأقسام الجديدة والكروت ==================== */
+
+.main-section {
+  width: 100%;
+  max-width: 1500px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow:
+    0 0 40px rgba(124, 58, 237, 0.15),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.7s ease;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* شبكة حقول الإدخال */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 10px;
+}
+#client-msg {
+  color: #ef4444;
+  font-size: 0.85rem;
+  text-align: center;
+  min-height: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 
 @media (max-width: 768px) {
   .navbar {
-    margin: 0;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
   }
   .nav-links {
     display: none;
   }
-  .theme-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .container {
-    padding: 20px;
-  }
-
-  .price-inputs {
-    flex-direction: column;
-  }
-
+  .price-inputs,
   .search-buttons {
     flex-direction: column;
   }
-
   h2 {
     font-size: 2rem;
-  }
-
-  input,
-  button,
-  .total-box {
-    height: 48px;
-  }
-
-  input::placeholder {
-    font-size: 13px;
-  }
-
-  #searchTitle,
-  #searchCategory {
-    font-size: 14px;
   }
 }
