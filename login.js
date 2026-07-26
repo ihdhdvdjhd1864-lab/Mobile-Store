@@ -1,5 +1,5 @@
 let SECRET_ID = "1001";
-let SECRET_CODE = "medstar2026";
+let SECRET_CODE = "kimo2008";
 let loginForm = document.querySelector("form");
 let userIdInput = document.getElementById("adminId");
 let userCodeInput = document.getElementById("adminCode");
