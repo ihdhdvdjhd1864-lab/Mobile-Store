@@ -507,6 +507,7 @@ tbody tr:hover {
   width: 38px;
   height: 38px;
   border-radius: 50%;
+  margin-right: 20px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
@@ -698,7 +699,7 @@ body.light-mode .toggle-btn {
   justify-content: center;
   gap: 10px;
 
-  padding: 12px 24px;
+  padding: 12px;
   border: none;
   outline: none;
   border-radius: 12px;
@@ -741,6 +742,7 @@ body.light-mode .toggle-btn {
   }
   .toggle-btn {
     display: block;
+    
   }
   .overlay .nav-links {
     display: flex;
