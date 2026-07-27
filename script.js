@@ -128,12 +128,13 @@ function showData() {
 }
 showData();
 updateDashboard();
-
+showLastFiveProducts();
 function deleteData(i) {
   dataPro.splice(i, 1);
   localStorage.product = JSON.stringify(dataPro);
   showData();
   updateDashboard();
+  showLastFiveProducts();
 }
 
 function deleteAllBtn() {
@@ -161,6 +162,7 @@ function deleteAll() {
   category.value = "";
   getTotal();
   updateDashboard();
+  showLastFiveProducts();
 }
 function updateData(j) {
   title.value = dataPro[j].title;
@@ -179,6 +181,7 @@ function updateData(j) {
     behavior: "smooth",
   });
   updateDashboard();
+  showLastFiveProducts();
 }
 
 let searchMood = "title";
@@ -293,7 +296,12 @@ function showToast(message, type = "success") {
   let container = document.getElementById("toast-container");
   let toast = document.createElement("div");
 
-  let icon = type === "success" ? "fa-circle-check" : "fa-circle-exclamation";
+  let icon;
+  if(type==="success"){
+    icon="fa-check"
+  }else{
+    icon="fa-circle-exclamation"
+  }
   let iconColor = type === "success" ? "#10b981" : "#ef4444";
 
   toast.className = `toast ${type}`;
@@ -356,15 +364,14 @@ function toggleTheme() {
   let body = document.body;
   let icon = document.getElementById("theme-icon");
   body.classList.toggle("light-mode");
-
   if (body.classList.contains("light-mode")) {
     icon.className = "fa-solid fa-sun";
     localStorage.setItem("theme", "light");
-    showToast("تم التفعيل: الوضع المضيء ☀️", "info");
+    showToast("تم التفعيل: الوضع المضيء ☀️", "success");
   } else {
     icon.className = "fa-solid fa-moon";
     localStorage.setItem("theme", "dark");
-    showToast("تم التفعيل: الوضع المظلم 🌙", "info");
+    showToast("تم التفعيل: الوضع المظلم 🌙", "success");
   }
 }
 // قراءة الثيم المحفوظ أول ما الصفحة تفتح
@@ -397,8 +404,6 @@ submit22.addEventListener("click", () => {
     email: email.value,
     address: address.value,
   };
-  dataClient.push(client);
-  let error220 = "";
   if (
     ueas.value.trim() === "" ||
     phone.value.trim() === "" ||
@@ -413,6 +418,9 @@ submit22.addEventListener("click", () => {
     }, 2000);
     return;
   }
+  dataClient.push(client);
+  let error220 = "";
+
   localStorage.setItem("dataClient", JSON.stringify(dataClient));
   showDataClient();
   ueas.value = "";
@@ -533,21 +541,41 @@ function deleteEmployee(index) {
   }
 }
 
-
 let toggleBtn = document.querySelector(".toggle-btn");
 let overlay = document.querySelector(".overlay");
 toggleBtn.addEventListener("click", () => {
   overlay.classList.toggle("active");
   if (overlay.classList.contains("active")) {
     toggleBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-  }
-  else {
+  } else {
     toggleBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
   }
-}
-);
+});
 
 overlay.addEventListener("click", () => {
   overlay.classList.remove("active");
   toggleBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
 });
+
+function showLastFiveProducts() {
+  let lastFiveProducts = dataPro.slice(-5).reverse();
+  let tbodyLastFive = document.querySelector("#tbody-last-five");
+  let dashTotalRotate = document.querySelector("#dash-total-rotate");
+  dashTotalRotate.innerHTML = lastFiveProducts.length;
+  tbodyLastFive.innerHTML = "";
+  lastFiveProducts.forEach((product, i) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${product.title}</td>
+      <td>${product.price}</td>
+      <td>${product.taxes}</td>
+      <td>${product.ads}</td>
+      <td>${product.discount}</td>
+      <td>${product.total}</td>
+      <td>${product.category}</td>
+    `;
+    tbodyLastFive.appendChild(tr);
+  });
+}
+showLastFiveProducts();
