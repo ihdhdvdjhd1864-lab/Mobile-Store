@@ -297,10 +297,10 @@ function showToast(message, type = "success") {
   let toast = document.createElement("div");
 
   let icon;
-  if(type==="success"){
-    icon="fa-check"
-  }else{
-    icon="fa-circle-exclamation"
+  if (type === "success") {
+    icon = "fa-check";
+  } else {
+    icon = "fa-circle-exclamation";
   }
   let iconColor = type === "success" ? "#10b981" : "#ef4444";
 
@@ -579,3 +579,7 @@ function showLastFiveProducts() {
   });
 }
 showLastFiveProducts();
+
+let toggleThemeBtn22 = document.getElementById("ctagory").value;
+console.log(toggleThemeBtn22);
+

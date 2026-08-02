@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Store</title>
+    <link rel="icon" type="image/png" href="img/gemini-svg.png" />
+    <!-- صورة المعاينة لما تبعت اللينك في الواتساب أو فيسبوك -->
+    <meta property="og:image" content="img/gemini-svg.png" />
+    <title>Mobile_Store</title>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -19,7 +22,7 @@
     <!-- قسم شاشة التحميل  -->
     <div id="loader">
       <div class="loader-content">
-        <i class="fa-solid fa-mobile-screen-button loader-icon"></i>
+        <img class="logoBrand-loader" src="img/gemini-svg.png" alt="logo" />
         <h2>Phoenix<span>Store</span></h2>
         <div class="spinner"></div>
         <p>جاري تحميل البيانات...</p>
@@ -34,7 +37,7 @@
           <!-- 1. الشعار واسم النظام -->
 
           <div class="nav-brand">
-            <img class="logoBrand" src="img/gemini-svg.png" alt="logo">
+            <img class="logoBrand" src="img/gemini-svg.png" alt="logo" />
             <h2>Phonix<span>Store</span></h2>
           </div>
           <!-- 2. البروفايل والتنبيهات -->
@@ -60,7 +63,7 @@
 
           <div class="overlay">
             <!-- 4. روابط التنقل السريعة -->
-             <img class="logoBrandnavbar" src="img/gemini-svg.png" alt="">
+            <img class="logoBrandnavbar" src="img/gemini-svg.png" alt="" />
             <ul class="nav-links">
               <li>
                 <a href="#" class="active"
@@ -159,7 +162,7 @@
               <h3 id="dash-total-employees">0</h3>
             </div>
           </div>
-          <div class="card">
+          <div class="card" onclick="location.href = '#last-five-products'">
             <i class="fa-solid fa-clock-rotate-left"></i>
             <div class="card-info">
               <p>اخر منتجات</p>
@@ -341,7 +344,7 @@
       </div>
       <!-- اخر منتجات -->
       <div id="employees-section" class="main-section">
-        <div class="table-responsive">
+        <div class="table-responsive" id="last-five-products">
           <div class="section-header">
             <h2><i class="fa-solid fa-clock-rotate-left"></i> اخر المنتجات</h2>
           </div>
@@ -365,6 +368,13 @@
     </div>
     <!-- سهم لأعلى -->
     <div class="up"><i class="fa-solid fa-arrow-up"></i></div>
+    <select name="" id="ctagory">
+      <option value="iphone">أيفون</option>
+      <option value="samsung">سامسونج</option>
+      <option value="huawei">هواوي</option>
+      <option value="nokia">نوكيا</option>
+      <option value="oppo">اوبو</option>
+    </select>
     <script src="script.js"></script>
   </body>
 </html>
