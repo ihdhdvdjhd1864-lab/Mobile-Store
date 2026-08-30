@@ -254,7 +254,7 @@
       </div>
 
       <!-- ==================== 2. قسم إدارة العملاء (Clients Section) ==================== -->
-      <div id="clients-section" class="main-section">
+      <div id="clients-section" class="main-section hidden">
         <div class="section-header">
           <h2><i class="fa-solid fa-users"></i> إدارة العملاء</h2>
         </div>
@@ -275,6 +275,10 @@
             type="text"
             id="client-address"
             placeholder="العنوان / المدينة"
+          />
+          <input
+            type="file"
+            id="client-file"
           />
         </div>
         <button id="client-submit">إضافة عميل جديد</button>
@@ -305,7 +309,7 @@
       </div>
 
       <!-- ==================== 3. قسم إدارة الموظفين (Employees Section) ==================== -->
-      <div id="employees-section" class="main-section">
+      <div id="employees-section" class="main-section hidden">
         <div class="section-header">
           <h2><i class="fa-solid fa-user-tie"></i> إدارة الموظفين</h2>
         </div>
@@ -343,7 +347,7 @@
         </div>
       </div>
       <!-- اخر منتجات -->
-      <div id="employees-section" class="main-section">
+      <div id="employees-section" class="main-section hidden">
         <div class="table-responsive" id="last-five-products">
           <div class="section-header">
             <h2><i class="fa-solid fa-clock-rotate-left"></i> اخر المنتجات</h2>
@@ -368,7 +372,7 @@
     </div>
     <!-- سهم لأعلى -->
     <div class="up"><i class="fa-solid fa-arrow-up"></i></div>
-  
+
     <script src="script.js"></script>
   </body>
 </html>

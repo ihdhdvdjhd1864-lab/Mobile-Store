@@ -17,7 +17,26 @@ window.addEventListener("DOMContentLoaded", () => {
     if (loader) {
       loader.classList.add("hide");
     }
-  }, 3000); // 👉 هنا الـ 3 ثواني، تقدر تزودها أو تقللها براحتك
+  }, 3000);
+});
+
+// اخفاء  العناصر  اسكرول وظهر محتوي تدريجن
+let scralc = new IntersectionObserver(
+  (iteme, kimo) => {
+    iteme.forEach((box) => {
+      if (box.isIntersecting) {
+        box.target.classList.add("show");
+        kimo.unobserve(box.target);
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  },
+);
+let hIdden = document.querySelectorAll(".hidden");
+hIdden.forEach((el) => {
+  scralc.observe(el);
 });
 
 let title = document.getElementById("title");
@@ -42,6 +61,7 @@ function getTotal() {
     total.style.background = "#a30000";
   }
 }
+// تسجيل البيانات
 let dataPro = [];
 if (localStorage.getItem("product") != null) {
   dataPro = JSON.parse(localStorage.getItem("product"));
@@ -49,23 +69,20 @@ if (localStorage.getItem("product") != null) {
   dataPro = [];
 }
 submit.onclick = function () {
-  let error = "";
+  let msg = document.getElementById("msg");
   if (
     title.value == "" ||
     price.value == "" ||
     category.value == "" ||
     !Number.isInteger(Number(count.value))
   ) {
-    error = "Please Enter Valid Data";
-  }
-  if (error != "") {
-    let msg = document.getElementById("msg");
-    msg.innerHTML = error;
+    msg.textContent = "Please Enter Valid Data";
     setTimeout(() => {
       msg.innerHTML = "";
     }, 2000);
     return;
   }
+
   let newPro = {
     title: title.value,
     price: price.value,
@@ -110,6 +127,7 @@ function showData() {
   for (let i = 0; i < dataPro.length; i++) {
     if (!dataPro[i]) continue;
     let tr = document.createElement("tr");
+
     tr.innerHTML = `
   <td>${i + 1}</td>
   <td>${dataPro[i].title}</td>
@@ -292,10 +310,10 @@ function updateDashboard() {
 updateDashboard();
 
 /* اكسيل تصدير📊📊################### ؟؟؟؟  */
+// دالة عرض الإشعارات
 function showToast(message, type = "success") {
   let container = document.getElementById("toast-container");
   let toast = document.createElement("div");
-
   let icon;
   if (type === "success") {
     icon = "fa-check";
@@ -388,6 +406,7 @@ window.addEventListener("DOMContentLoaded", () => {
 let ueas = document.querySelector("#client-name");
 let phone = document.querySelector("#client-phone");
 let email = document.querySelector("#client-email");
+let file = document.querySelector("#client-file");
 let address = document.querySelector("#client-address");
 let submit22 = document.querySelector("#client-submit");
 let search = document.querySelector("#search-client");
@@ -402,6 +421,7 @@ submit22.addEventListener("click", () => {
     name: ueas.value,
     phone: phone.value,
     email: email.value,
+    file: file.files[0] ? URL.createObjectURL(file.files[0]) : "",
     address: address.value,
   };
   if (
@@ -426,6 +446,7 @@ submit22.addEventListener("click", () => {
   ueas.value = "";
   phone.value = "";
   email.value = "";
+  file.value = "";
   address.value = "";
 });
 
@@ -436,7 +457,13 @@ function showDataClient() {
     let tr = document.createElement("tr");
     tr.innerHTML = `
     <td>${index + 1}</td>
-    <td>${`<i class="fa-solid fa-user"></i>`}</td>
+<td>
+  ${
+    client.file
+      ? `<img src="${client.file}" class="client-image" alt="Client">`
+      : "No Image"
+  }
+</td>
     <td>${client.name}</td>
     <td>${client.phone}</td>
     <td>${client.email}</td>
@@ -579,7 +606,3 @@ function showLastFiveProducts() {
   });
 }
 showLastFiveProducts();
-
-let toggleThemeBtn22 = document.getElementById("ctagory").value;
-console.log(toggleThemeBtn22);
-

@@ -10,9 +10,7 @@ loginForm.addEventListener("submit", (e) => {
   let enteredCode = userCodeInput.value.trim();
   // التحقق من صحة البيانات
   if (enteredId === SECRET_ID && enteredCode === SECRET_CODE) {
-    // 1. حفظ حالة التسجيل في sessionStorage لو حابب تتأكد إنه مسجل قبل الدخول
     sessionStorage.setItem("isLoggedIn", "true");
-    // 2. تحويل المستخدم للصفحة الرئيسية
     window.location.href = "index.html";
   } else {
     alert("Please Enter Valid Data");
